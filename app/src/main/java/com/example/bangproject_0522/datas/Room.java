@@ -6,6 +6,17 @@ public class Room {
     private String address; //구 동 만 기록
     private int floor; //층수 나타내기
     private String description;
+    public  String getFormattedFloor(){
+      if(this.floor>0)  {
+          return this.floor + "층";
+      }
+      else if(this.floor<0){
+          return String.format("지하%d층",-this.floor);
+      }
+      else{
+          return "반지하";
+      }
+    }
     public String getFormattedPrice(){
         if(price<10000){
 //            몇천만원 8,000으로 ","만 찍어주기
@@ -15,7 +26,7 @@ public class Room {
 //            2억 8,500 이런식으로 가공
         return String.format("%d억%,d",this.price / 10000,this.price%10000);
         }
-    };
+    }
 
     public Room(int price, String address, int floor, String description) {
         this.price = price;
