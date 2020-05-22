@@ -1,6 +1,8 @@
 package com.example.bangproject_0522.datas;
 
-public class Room {
+import java.io.Serializable;
+
+public class Room implements Serializable {
 
     private int price; //만원단위로 기록
     private String address; //구 동 만 기록
