@@ -1,6 +1,9 @@
 package com.example.bangproject_0522;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -28,6 +31,13 @@ public class MainActivity extends BaseActivity {
 
     @Override
     public void setupEvents() {
+        binding.roomList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent myintent = new Intent(mContext,DetailRoomActivity.class);
+                startActivity(myintent);
+            }
+        });
 
     }
 
