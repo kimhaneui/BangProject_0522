@@ -1,9 +1,8 @@
 package com.example.bangproject_0522;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.databinding.DataBindingUtil;
-
 import android.os.Bundle;
+
+import androidx.databinding.DataBindingUtil;
 
 import com.example.bangproject_0522.adapters.RoomAdapter;
 import com.example.bangproject_0522.databinding.ActivityMainBinding;
