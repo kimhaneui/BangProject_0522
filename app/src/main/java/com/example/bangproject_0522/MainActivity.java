@@ -1,9 +1,12 @@
 package com.example.bangproject_0522;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Toast;
 
 import androidx.databinding.DataBindingUtil;
 
@@ -33,10 +36,25 @@ public class MainActivity extends BaseActivity {
     public void setupEvents() {
         binding.roomList.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+            public boolean onItemLongClick(AdapterView<?> parent, View view, final int position, long id) {
 //                목록에서 빼주세요~!
-                rooms.remove(position);
-                mRoomAdapter.notifyDataSetChanged();
+                AlertDialog.Builder alert = new AlertDialog.Builder(mContext);
+                alert.setTitle("방 목록 삭제 확인");
+                alert.setMessage("정말 이 방을 삭제하시겠습니까?");
+                alert.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        rooms.remove(position);
+
+                        mRoomAdapter.notifyDataSetChanged();
+
+                        Toast.makeText(mContext,"방이 삭제 되었습니다",Toast.LENGTH_SHORT).show();
+                    }
+                });
+                alert.setNegativeButton("취소",null);
+
+                alert.show();
+
                 return false;
             }
         });
